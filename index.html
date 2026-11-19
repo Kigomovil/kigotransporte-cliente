@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KIGO Transporte</title>
+<title>Moto Transporte</title>
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
   body { background: #fff; min-height: 100vh; display: flex; justify-content: center; }
@@ -18,7 +18,7 @@
     padding: 32px 24px 20px;
   }
 
-  /* ===== ESPACIO PARA EL LOGO ===== */
+  /* ===== LOGO ===== */
   .logo {
     width: 250px;
     height: 200px;
@@ -28,29 +28,31 @@
   }
   .logo img { width: 100%; height: 100%; object-fit: contain; }
 
-  /* ===== IMAGEN CENTRAL ===== */
+  /* ===== IMAGEN CENTRAL - DESVANECIDO POR LOS 4 LADOS ===== */
   .imagen-central {
     width: 100%;
     height: 300px;
     margin: 12px 0 24px;
-    border-radius: 20px;
     overflow: hidden;
     position: relative;
+    /* Desvanecido arriba, abajo, izquierda y derecha */
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-composite: intersect;
   }
   .imagen-central img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.85;
-  }
-  .imagen-central::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, #fff 0%, transparent 25%, transparent 75%, #fff 100%);
+    display: block;
   }
 
-  /* ===== TEXTO CONDUCTOR - MÁS PEQUEÑO ===== */
+  /* ===== TEXTO CONDUCTOR ===== */
   .texto-conductor {
     width: 100%;
     font-size: 17px;
@@ -60,10 +62,10 @@
     margin-bottom: 20px;
   }
 
-  /* ===== BOTÓN QUE SÍ SE VE COMO BOTÓN ===== */
+  /* ===== BOTÓN PERMITIR UBICACIÓN ===== */
   .btn-ubicacion {
     width: 100%;
-    background: #0A1628;
+    background: #0A4AA8;
     color: #fff;
     border: none;
     border-radius: 16px;
@@ -75,12 +77,12 @@
     justify-content: center;
     gap: 10px;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(10,22,40,.35);
+    box-shadow: 0 6px 16px rgba(10,74,168,.35);
   }
   .btn-ubicacion:active { transform: scale(.98); }
   .btn-ubicacion svg { flex-shrink: 0; }
 
-  /* ===== TÉRMINOS - UN POQUITO MÁS ARRIBA ===== */
+  /* ===== TÉRMINOS ===== */
   .terminos {
     margin-top: 14px;
     font-size: 13px;
@@ -102,12 +104,12 @@
 
 <div class="pantalla">
 
-  <!-- AQUÍ VA TU LOGO -->
+  <!-- LOGO -->
   <div class="logo">
-    <img src="Logo.png" alt="KIGO Transporte">
+    <img src="Logo.png" alt="MOTO Transporte">
   </div>
 
-  <!-- IMAGEN CENTRAL -->
+  <!-- IMAGEN CENTRAL - NO CAMBIES LA IMAGEN, EL DESVANECIDO LO HACE EL CÓDIGO -->
   <div class="imagen-central">
     <img src="hombre-celular-es.png" alt="Hombre esperando su viaje">
   </div>
